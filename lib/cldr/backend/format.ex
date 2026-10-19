@@ -1023,12 +1023,13 @@ defmodule Cldr.DateTime.Format.Backend do
 
         ### Returns
 
-        * a map of localized metazone display data.
+        * a map of localized metazone display data, or `nil` for locales without
+          metazone data (such as `:und`).
 
         """
         @doc since: "2.33.0"
         @spec meta_zones(Locale.locale_reference()) ::
-                {:ok, map()} | {:error, {module(), String.t()}}
+                {:ok, map() | nil} | {:error, {module(), String.t()}}
 
         def meta_zones(locale \\ unquote(backend).get_locale())
 
